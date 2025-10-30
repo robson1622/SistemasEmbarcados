@@ -1,10 +1,8 @@
 # Estudo de Sistemas Embarcados
 
 ## Sumário
-- [Introdução](#introdução)
-- [UART](#uart)
-- [I2C](#i2c)
-- [RTOS](#rtos)
+- [UART](UART.md)
+- [ThreadX](ThreadX.md)
 
 ## Introdução
 Texto aqui...
