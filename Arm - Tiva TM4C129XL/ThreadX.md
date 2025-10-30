@@ -1,4 +1,11 @@
 # Paralelismo com ThreadX
+## Recursos
+- [Fila](#Fila)
+- [Flags de evento](#Flags_de_evento)
+- [Mutex](#Mutex)
+- [Semaforo](#Semaforo)
+- [Pool](#Pool)
+- [Block Pool](#Block_pool)
 
 É preciso configurar algum sistema de timer para que as interrupções periódicas funcionem no ThreadX, no caso da tiva é o SysTick,
 que deve ser configurado no arquivo tx_initialize_low_level (informação disponível em [Chapter2](https://github.com/eclipse-threadx/rtos-docs/blob/main/rtos-docs/threadx/chapter2.md)
