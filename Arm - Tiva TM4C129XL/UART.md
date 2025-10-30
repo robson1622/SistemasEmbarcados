@@ -1,3 +1,5 @@
+# Comunicação UART
+A porta UART funciona por interrupção, a cada novo botão pressionado é gerado uma interrupção.
 ```cpp
 void UARTIntHandler(void)
 {
@@ -25,6 +27,16 @@ void UARTIntHandler(void)
         // Turn off the LED
         MAP_GPIOPinWrite(GPIO_PORTN_BASE, GPIO_PIN_0, 0);
 
+    }
+}
+```
+Função de envio, ela aparece na função Handler, é realizado o envio caractere 1 a 1.
+```cpp
+void UARTSend(const uint8_t *pui8Buffer, uint32_t ui32Count){
+    // Loop while there are more characters to send.
+    while(ui32Count--){
+        // Write the next character to the UART.
+        MAP_UARTCharPutNonBlocking(UART0_BASE, *pui8Buffer++);
     }
 }
 ```
