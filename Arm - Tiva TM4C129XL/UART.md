@@ -1,4 +1,4 @@
-```
+```cpp
 void UARTIntHandler(void)
 {
     uint32_t ui32Status;
