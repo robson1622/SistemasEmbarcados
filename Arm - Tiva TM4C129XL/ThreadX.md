@@ -9,6 +9,14 @@
 - [Block Pool](#Block_pool)
 
 ## Thread
+```cpp
+/* Define o objeto de controle da thread...  */
+TX_THREAD               thread;
+/* Define um contador para ser usado na thread  */
+ULONG                   thread_counter;
+/*Define a Stack que será usada pela thread (Espaço de memória e tamanho)  */
+UCHAR                   thread_stack[STACK_SIZE];
+```
 É preciso configurar algum sistema de timer para que as interrupções periódicas funcionem no ThreadX, no caso da tiva é o SysTick,
 que deve ser configurado no arquivo tx_initialize_low_level (informação disponível em [Chapter2](https://github.com/eclipse-threadx/rtos-docs/blob/main/rtos-docs/threadx/chapter2.md)
 ```cpp
