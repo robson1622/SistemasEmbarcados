@@ -9,7 +9,7 @@
 - [Block Pool](#Block_pool)
 
 ## Thread
-Inicialização. Toda a thread deve possuir os seguintes objetos iniciados.
+Declaração. Toda a thread deve possuir os seguintes objetos declarados.
 ```cpp
 /* Define o objeto de controle da thread...  */
 TX_THREAD               thread;
@@ -20,29 +20,42 @@ UCHAR                   thread_stack[STACK_SIZE];
 ```
 É preciso configurar algum sistema de timer para que as interrupções periódicas funcionem no ThreadX, no caso da tiva é o SysTick,
 que deve ser configurado no arquivo tx_initialize_low_level (informação disponível em [Chapter2](https://github.com/eclipse-threadx/rtos-docs/blob/main/rtos-docs/threadx/chapter2.md)
+
+Inicialização :
 ```cpp
-// Antes de começar, precisamos inicializar o sistema
-
+// Toda thread tem uma rotina definida
+void    thread_entry(ULONG thread_input){
+    // ....
+}
+// Inicialização de threads :
+void    tx_application_define(void *first_unused_memory)
+{
+    /* Create the main thread.  */
+    tx_thread_create(&thread,   // Endereço do objeto de controle da thread
+            "thread",           // Nome da thread
+            thread_entry,       // Função de rotina/entrada
+            0,                  // 
+            thread_stack,       // Endereço de incio do espaço de memória de trabalho
+            DEMO_STACK_SIZE,    // Tamanho do espaço de memória de trabalho
+            1,                  //
+            1,                  //
+            TX_NO_TIME_SLICE,   // Por quanto tempo esta thread pode ser executada
+            TX_AUTO_START);     // Inicialização automática
+}
+// Para que todas as threads iniciem, precisa chamar a função do ThreadX
 int main(){
-    // configuramos o clock da placa
-    SystemCoreClock = SysCtlClockFreqSet(... /* olhar no SysTick*/);
-
-    // Inicializar Kernel do ThreadX
+    //... Dentro da main 
     tx_kernel_enter();
-
 }
 ```
+Utilização :
 ```cpp
-// Alocando recursos do sistema
-
-tx_byte_pool_create(&byte_pool_0, "nome",memory_area, TAMANHO);
-tx_byte_allocate(&byte_pool_0, &pointer, TAMANHO, TX_NO_WAIT);
-
-// Criando as Threads
-
-tx_thread_create(&thread, "nome",função_entry,parametro,
-                 stack_prt, stack_size,
-                 prioridade, prioridade_preempção, time_slice, auto_start );
+/* A função passada na referência de tx_thread_create(...) é a thread que vai rodar*/
+thread_entry(ULONG thread_input){
+    while(1) {
+        /*Então tudo aqui dentro vai continuar sendo executado*/
+    }
+}
 ```
 ## Fila
 A fila é o principal meio de comunicação entre duas threads, ela é um espaço de memória onde uma ou mais threads escrevem para uma ou mais threads lerem.
@@ -71,7 +84,7 @@ E por fim a sua utilização :
         if (status != TX_SUCCESS)
             break;
         /*Incrementa as mesagens enviadas*/
-        thread_1_messages_sent++;
+        thread_A_messages_sent++;
 
 
         /*Recebendo a mensagem dentro da thread B */
@@ -79,8 +92,8 @@ E por fim a sua utilização :
         UINT    status;
         status = tx_queue_receive(&queue_0, &received_message, TX_WAIT_FOREVER);
         /* Verificamos o status e se a mensagem recebida é o que se esperava*/
-        if ((status != TX_SUCCESS) || (received_message != thread_2_messages_received))
+        if ((status != TX_SUCCESS) || (received_message != thread_B_messages_received))
             break;
         /* Se tudo estiver correto, incrementa  */
-        thread_2_messages_received++;
+        thread_B_messages_received++;
 ```
