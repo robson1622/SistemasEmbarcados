@@ -4,7 +4,7 @@
 - [Fila](#Fila)
 - [Flags de evento](#Flags_de_evento)
 - [Mutex](#Mutex)
-- [Semaforo](#Semaforo)
+- [Semaforo](#Semáforo)
 - [Pool](#Pool)
 - [Block Pool](#Block_pool)
 
@@ -101,3 +101,6 @@ Para receber :
         /* Se tudo estiver correto, incrementa  */
         thread_B_messages_received++;
 ```
+## Mutex
+## Semáforo
+## 
