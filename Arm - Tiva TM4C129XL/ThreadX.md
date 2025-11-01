@@ -76,6 +76,8 @@ Sua inicialização :
     tx_queue_create(&queue, "queue", TX_1_ULONG, queue_area, QUEUE_SIZE*sizeof(ULONG));
 ```
 E por fim a sua utilização :
+
+Para enviar :
 ```cpp
         /*Enviando a mensagem dentro da threas A */
         UINT    status;
@@ -86,7 +88,9 @@ E por fim a sua utilização :
         /*Incrementa as mesagens enviadas*/
         thread_A_messages_sent++;
 
-
+```
+Para receber :
+```cpp
         /*Recebendo a mensagem dentro da thread B */
         ULONG   received_message;
         UINT    status;
