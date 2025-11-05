@@ -3,7 +3,7 @@
 ## Sumário
 - [UART](UART.md)
 - [ThreadX](ThreadX.md)
-- [SysTick](SysTick.ms)
+- [SysTick](SysTick.md)
 
 ## Introdução
 Texto aqui...
