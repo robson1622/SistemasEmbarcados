@@ -2,6 +2,12 @@
 Este é a ferramenta/circuito pricipal de controle de tempo da Tiva. Com ele podemos agendar interrupções
 a cada intervalo de tempo programado.
 
+Para usar o Systick, comece com:
+```cpp
+#include "driverlib/sysctl.h"
+#include "driverlib/interrupt.h"
+#include "driverlib/systick.h"
+```
 Segue um exemplo de declaração da inicialização do SysTick:
 ```cpp
 static void systick_init_1ms(void)
