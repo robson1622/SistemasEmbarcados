@@ -10,8 +10,8 @@ Assim como nas outras plataformas, é necessário configurar :
 ### Resistores
 |Nomeclatura| Imagem do circuito | Explicação |
 |-----------|--------------------|------------|
-| Pull up (puxar para cima) |[pull up](./images/pull_up.jpg)|Uma entrada do microcontrolador é ligada por uma resistência ao VCC, nesta mesmo nó é ligado um botão por uma ponta e na outra ponta do botão ele é ligado ao GND.|
-
+| Pull up (puxar para cima) |[pull up](./images/pull_up.JPG)|Uma entrada do microcontrolador é ligada por uma resistência ao VCC, nesta mesmo nó é ligado um botão por uma ponta e na outra ponta do botão ele é ligado ao GND.|
+| Pull down (puxar para baixo) | [pull down](./images/pull_down.JPG)| Funciona da mesma forma do anterior, porém com o sinal invertido entre a entrada do botão e do resistor.|
 
 ### Modos do GPIO
 #### Input Floating
