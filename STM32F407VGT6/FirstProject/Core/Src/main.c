@@ -4,8 +4,9 @@
  * Auuuu
  */
 #include "main.h"
-#define SOLI1_Pin GPIO_PIN_10
-#define SOLI1_GPIO_Port GPIOD
+#define SOLI1_Pin_Positivo GPIO_PIN_11 // Dentro das 16 posições de memória dos GPIOs do por D, esta é a 10
+#define SOLI1_Pin_Negativo GPIO_PIN_10 // Dentro das 16 posições de memória dos GPIOs do por D, esta é a 10
+#define SOLI1_GPIO_Port GPIOD // Posição de memória de 32 bits onde este bit em questão ativa os GPIOs da porta D
 
 void SystemClock_Config(void);
 
@@ -15,8 +16,21 @@ int main(void)
 {
 
   HAL_Init();
-
   SystemClock_Config();
+
+
+  // ---------------------------------------------------------
+
+  	  HAL_GPIO_WritePin(SOLI1_GPIO_Port,SOLI1_Pin,GPIO_PIN_RESET); // CONFIGURA COMO SAÍDA
+
+	  GPIO_InitTypeDef GPIO_InitStruct;
+	  GPIO_InitStruct.Pin 	= SOLI1_Pin_Positivo | SOLI1_Pin_Negativo;
+	  GPIO_InitStruct.Mode 	= GPIO_MODE_OUTPUT_PP;
+	  GPIO_InitStruct.Pull 	= GPIO_NOPULL;
+	  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+	  HAL_GPIO_Init(SOLI1_GPIO_Port,&GPIO_InitStruct);
+
+  // ---------------------------------------------------------
 
   while (1)
   {
