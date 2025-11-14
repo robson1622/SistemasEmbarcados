@@ -6,6 +6,20 @@ Assim como nas outras plataformas, é necessário configurar :
 3. Definir as características elétricas (Tipo de saída, Velocidade, Pull-up/Pull-down).
 4. Controlar os dados (para uso como Entrada ou Saída).
 
+## Conceitos importantes
+### Resistores
+|Nomeclatura| Imagem do circuito | Explicação |
+|-----------|--------------------|------------|
+| Pull up (puxar para cima) |[pull up](./images/pull_up.jpg)|Uma entrada do microcontrolador é ligada por uma resistência ao VCC, nesta mesmo nó é ligado um botão por uma ponta e na outra ponta do botão ele é ligado ao GND.|
+
+
+### Modos do GPIO
+#### Input Floating
+A entrada não fica ligada a nenhum resistor nem a transistores, o seu valor é definido somente pelo circuito de entrada.
+```cpp
+  GPIO_InitStructure.Mode = 
+```
+#### 
 
 
 
